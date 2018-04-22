@@ -185,21 +185,45 @@ namespace Rummikub
             {
                 foreach (List<Tile> group in board)
                 {
-                    foreach (Tile boardTile in group)
+                    if (group.Count > 3)
                     {
-                        if (tile.value == boardTile.value)
+
+                        if (tile.value == group[0].value)
                         {
                             bool check = true;
                             for (int i = 0; i < colorGroup.Count; i++)
                             {
-                                if ((boardTile.type == colorGroup[i].type))
+                                if ((group[0].type == colorGroup[i].type))
                                     check = false;
 
 
                             }
                             if (check)
                             {
-                                colorGroup.Add(boardTile);
+                                colorGroup.Add(group[0]);
+                                //removetile = boardTile;
+                                //hand.Remove(boardTile);
+                            }
+
+                        }
+                    }
+
+                    if (group.Count > 3)
+                    {
+
+                        if (tile.value == group[group.Count-1].value)
+                        {
+                            bool check = true;
+                            for (int i = 0; i < colorGroup.Count; i++)
+                            {
+                                if ((group[group.Count - 1].type == colorGroup[i].type))
+                                    check = false;
+
+
+                            }
+                            if (check)
+                            {
+                                colorGroup.Add(group[group.Count - 1]);
                                 //removetile = boardTile;
                                 //hand.Remove(boardTile);
                             }
@@ -212,8 +236,30 @@ namespace Rummikub
                 if (colorGroup.Count >= 3)
                 {
                     board.Add(colorGroup);
+                    //List<List<Tile>> newboard = new List<List<Tile>>();
+                    
                     foreach (Tile colortile in colorGroup)
                         hand.Remove(colortile);
+                    /*foreach (List<Tile> grp in board)
+                    {
+                        bool check = false;
+                        foreach (Tile t in colorGroup)
+                        {
+                            if ((grp[0].equals_tile(t) || grp[grp.Count - 1].equals_tile(t)) && grp.Count > 3)
+                            {
+                                check = true;
+                                List<Tile> fixedlist = new List<Tile>(grp);
+                                fixedlist.Remove(t);
+                                newboard.Add(fixedlist);
+                                break;
+                            }
+
+                        }
+                        if (!check)
+                            newboard.Add(grp);
+
+                    }*/
+                   
                     return new Bros(board, hand, colorGroup);
                     //return true;
                 }
@@ -276,14 +322,16 @@ namespace Rummikub
             {
                 foreach (List<Tile> group in board)
                 {
-                    foreach (Tile boardTile in group)
+                    if (group.Count > 3)
                     {
+
+
 
 
                         bool check = true;
                         for (int i = 0; i < straightGroup.Count; i++)
                         {
-                            if (boardTile.type != straightGroup[i].type)
+                            if (group[0].type != straightGroup[i].type)
                                 check = false;
 
 
@@ -291,19 +339,19 @@ namespace Rummikub
                         if (check)
                         {
 
-                            if (straightGroup[0].value - 1 == boardTile.value)
+                            if (straightGroup[0].value - 1 == group[0].value)
                             {
 
-                                straightGroup.Insert(0, boardTile);
+                                straightGroup.Insert(0, group[0]);
                                 //removetile = boardTile;
                                 //straightGroup.Sort((x, y) => x.value.CompareTo(y.value));
                                 //group.Remove(boardTile);
                             }
                             else
                             {
-                                if (straightGroup[straightGroup.Count - 1].value + 1 == boardTile.value)
+                                if (straightGroup[straightGroup.Count - 1].value + 1 == group[0].value)
                                 {
-                                    straightGroup.Add(boardTile);
+                                    straightGroup.Add(group[0]);
                                     //removetile = boardTile;
                                     // group.Remove(boardTile);
                                 }
@@ -313,33 +361,94 @@ namespace Rummikub
 
 
                         }
+
+                        if (group.Count > 3)
+                        {
+
+                            check = true;
+                            for (int i = 0; i < straightGroup.Count; i++)
+                            {
+                                if (group[group.Count - 1].type != straightGroup[i].type)
+                                    check = false;
+
+
+                            }
+                            if (check)
+                            {
+
+                                if (straightGroup[0].value - 1 == group[group.Count - 1].value)
+                                {
+
+                                    straightGroup.Insert(0, group[group.Count - 1]);
+                                    //removetile = boardTile;
+                                    //straightGroup.Sort((x, y) => x.value.CompareTo(y.value));
+                                    //group.Remove(boardTile);
+                                }
+                                else
+                                {
+                                    if (straightGroup[straightGroup.Count - 1].value + 1 == group[group.Count - 1].value)
+                                    {
+                                        straightGroup.Add(group[group.Count - 1]);
+                                        //removetile = boardTile;
+                                        // group.Remove(boardTile);
+                                    }
+                                }
+
+
+
+
+                            }
+                        }
+
+                        //group.Remove(removetile);
+
+
+
+
+
+
                     }
-                    //group.Remove(removetile);
-
-
-
-
-
-
                 }
-            }
-            if (straightGroup.Count >= 3)
-            {
-                board.Add(straightGroup);
-                for (int j = 0; j < straightGroup.Count; j++)
+                if (straightGroup.Count >= 3)
                 {
-                    hand.Remove(straightGroup[j]);
-                    // for(int i=0;i<board.Count;i++)
-                    //  board[i].Remove(straightGroup[j]);
-                }
-                return new Bros(board, hand, straightGroup);
+                    board.Add(straightGroup);
+                    //List<List<Tile>> newboard = new List<List<Tile>>();
 
-                //board.Add(straightGroup);
-                //return straightGroup;
-                //return true;
+                    for (int j = 0; j < straightGroup.Count; j++)
+                    {
+                        hand.Remove(straightGroup[j]);
+                        // for(int i=0;i<board.Count;i++)
+                        //  board[i].Remove(straightGroup[j]);
+                    }
+                   /* foreach (List<Tile> grp in board)
+                    {
+                        bool check=false;
+                        foreach(Tile t in straightGroup)
+                        {
+                            if ((grp[0].equals_tile(t) || grp[grp.Count - 1].equals_tile(t)) && grp.Count > 3)
+                            {
+                                check = true;
+                                List<Tile> fixedlist = new List<Tile>(grp);
+                                fixedlist.Remove(t);
+                                newboard.Add(fixedlist);
+                                break;
+                            }
+                           
+                        }
+                        if (!check)
+                            newboard.Add(grp);
+                         
+                    }*/
+                    
+                    return new Bros(board, hand, straightGroup);
+
+                    //board.Add(straightGroup);
+                    //return straightGroup;
+                    //return true;
+                }
+                //return false;
+                return null;
             }
-            //return false;
-            return null;
         }
 
         public static bool Easy(List<List<Tile>> board, List<Tile> hand)

@@ -257,11 +257,12 @@ namespace Rummikub
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-           
+
 
 
             //if (right != false)
             //{
+                int current = compLst.Count;
                 reserveBoard = new List<List<Tile>>(boardLst);
                 reserveComp = new List<Tile>(compLst);
                 UpdateBoard();
@@ -333,7 +334,7 @@ namespace Rummikub
 
 
 
-                /*if (Equals_Check_Comp(reserveComp, compLst))
+                if (current==compLst.Count)
 
                 {
                     Random random = new Random();
@@ -345,7 +346,7 @@ namespace Rummikub
                     computerTable.Controls.Add(take.picture);
                     AddMouseEventHandlerToComputer();
                     game.bowl.Remove(take);
-                }*/
+                }
 
 
                 if (handLst.Count == 0)
