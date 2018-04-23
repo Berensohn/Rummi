@@ -43,6 +43,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button7 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // imageList1
@@ -89,6 +90,7 @@
             // 
             // boardTable
             // 
+            this.boardTable.BackColor = System.Drawing.SystemColors.Info;
             this.boardTable.ColumnCount = 14;
             this.boardTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.boardTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
@@ -104,7 +106,7 @@
             this.boardTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.boardTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.boardTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
-            this.boardTable.Location = new System.Drawing.Point(460, 21);
+            this.boardTable.Location = new System.Drawing.Point(460, 3);
             this.boardTable.Name = "boardTable";
             this.boardTable.RowCount = 9;
             this.boardTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
@@ -116,7 +118,7 @@
             this.boardTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.boardTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.boardTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.boardTable.Size = new System.Drawing.Size(842, 686);
+            this.boardTable.Size = new System.Drawing.Size(842, 704);
             this.boardTable.TabIndex = 3;
             // 
             // computerTable
@@ -177,7 +179,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 8;
-            this.button3.Text = "update";
+            this.button3.Text = "Pattern Test";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -218,11 +220,23 @@
             this.textBox1.Size = new System.Drawing.Size(44, 20);
             this.textBox1.TabIndex = 13;
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(1333, 399);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 14;
+            this.button7.Text = "Check";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1799, 806);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
@@ -258,6 +272,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button7;
     }
 }
 

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Rummikub
 {
     public partial class Form1 : Form
@@ -21,7 +22,11 @@ namespace Rummikub
         PictureBox CardPictureBox = new PictureBox();
         List<List<Tile>> reserveBoard = new List<List<Tile>>();
         List<Tile> reserveComp = new List<Tile>();
-        int sum = 0;
+        static  Random random = new Random();
+        int boardsum;
+        List<int> chosen;
+
+
         bool right = false;
         // PictureBox BoardCardPictureBox = new PictureBox();
         //List<PictureBox> handPB = Create_PictureBoxList(game.hand);
@@ -337,7 +342,7 @@ namespace Rummikub
                 if (current==compLst.Count)
 
                 {
-                    Random random = new Random();
+                    
                     int r = random.Next(0, game.bowl.Count - 1);
                     Tile take = game.bowl[r];
                     //compLst.RemoveAt(0);
@@ -481,21 +486,42 @@ namespace Rummikub
             }
         }
 
+        private void WaitNSeconds(int segundos)
+        {
+            if (segundos < 1) return;
+            DateTime _desired = DateTime.Now.AddSeconds(segundos);
+            while (DateTime.Now < _desired)
+            {
+                System.Windows.Forms.Application.DoEvents();
+            }
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
+            boardsum = UpdateBoard();
+            MessageBox.Show(boardsum.ToString());
+            
 
-            MessageBox.Show(sum.ToString());
-            String answer = textBox1.Text;
+            List<List<int>> boardsum_Lists = new List<List<int>> ();
 
-
-            if (answer.Equals(sum.ToString()))
+            foreach (List<int> lst in MathProject.sdarot)
             {
-                MessageBox.Show("Correct!");
-                right = true;
-                sum = 0;
+                if (lst.Contains(boardsum))
+                {
+                    boardsum_Lists.Add(lst);
+                }
+                    
             }
-            else
-                MessageBox.Show("Wrong!");
+            if (boardsum_Lists.Count > 1)
+                boardsum_Lists.RemoveAt(0);
+
+            int r = random.Next(0, boardsum_Lists.Count - 1);
+            chosen = boardsum_Lists[r];
+
+            MessageBox.Show("The sum of all the tiles on the board is " + boardsum + " , enter in the text box the placement of " + boardsum + " in the pattern: " + MathProject.ListToString(chosen)+". Click on the Check button ->");
+            //MessageBox.Show((chosen.IndexOf(boardsum) + 1).ToString());
+
+           
 
 
 
@@ -512,7 +538,7 @@ namespace Rummikub
            
             PictureBox check = (PictureBox)sender;
             Tile t = new Tile(check);
-            sum += t.value;
+            //sum += t.value;
             CardPictureBox = check;
            // Tile tile = new Tile(check);
             //handLst.Remove(tile);
@@ -553,9 +579,9 @@ namespace Rummikub
         
 
        
-        public void UpdateBoard()
+        public int UpdateBoard()
         {
-            
+            int boardsum = 0;  
             List<Tile> lst = new List<Tile>();
             List<List<Tile>> newboard = new List<List<Tile>>();
             for (int i = 0; i < 9; i++)
@@ -568,6 +594,7 @@ namespace Rummikub
                     {
                         pb.MouseClick += new MouseEventHandler(handclickOnSpace);
                         Tile tile = new Tile(pb);
+                        boardsum += tile.value;
                        // MessageBox.Show(tile.value.ToString());
                         lst.Add(tile);
                         handLst.Remove(tile);
@@ -594,6 +621,7 @@ namespace Rummikub
             }
             boardLst = newboard;
             boardTB(boardLst, 0);
+            return boardsum;
             //AddMouseEventHandlerToBoard();
 
 
@@ -601,7 +629,7 @@ namespace Rummikub
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Random random= new Random();
+            
             int r = random.Next(0, game.bowl.Count - 1);
             Tile take = game.bowl[r];
             //handLst.RemoveAt(0);
@@ -661,7 +689,18 @@ namespace Rummikub
            
         }
 
-        
+        private void button7_Click(object sender, EventArgs e)
+        {
+            String answer = textBox1.Text;
+            if (answer.Equals((chosen.IndexOf(boardsum) + 1).ToString()))
+            {
+                MessageBox.Show("Correct!");
+                
+                //sum = 0;
+            }
+            else
+                MessageBox.Show("Wrong!");
+        }
     }
 }
 
