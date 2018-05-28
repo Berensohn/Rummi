@@ -19,18 +19,15 @@ namespace Rummikub
         /// <returns></returns>
         /// Future Error: will not do the algorithm at the beginning because there are no remainders on board
 
-        /*public static void hallelujah (List<Tile> comp, List<List<Tile>> board)
-        {
-            
-        }*/
 
         public static void amen(Tile tile, List<Tile> comp, List<List<Tile>> board)
         {
-            //Easy(board, comp);
+            
+
             Bros colorbros = createColorGroup(tile, comp, board);
             if (colorbros != null)
             {
-                //comp = new List < Tile > (colorbros.group);
+               
                 board = new List<List<Tile>>(colorbros.board);
 
             }
@@ -39,66 +36,21 @@ namespace Rummikub
                 Bros straightbros = createStraightGroup(tile, comp, board);
                 if (straightbros != null)
                 {
-                    //comp = new List<Tile>(straightbros.group);
+          
                     board = new List<List<Tile>>(straightbros.board);
 
                 }
             }
-            // MessageBox.Show(boolRemainder(board).ToString());
-            if (!boolRemainder(board))
+           /* if (!boolRemainder(board))
             {
 
                 return;
 
-            }
-            else
-            {
-                //MessageBox.Show(getRemainder(board)[0][0].ToString());
-                amen(getRemainder(board)[0][0], comp, board);
-
-            }
-
-            /* int tilecount = 0;
-             List<List<Tile>> remainder = getRemainder(board);
-             Tile maybe=null;
-             foreach (List<Tile> group in remainder)
-             {
-                 foreach (Tile t in group)
-                 {
-                     if (t!=null)
-                     {
-                         tilecount++;
-                         maybe = t;
-                     }
-                 }
-             }
-             if (tilecount == 1)
-             {
-                 if (maybe.Equals(tile))
-                     return;
-             }
-             else
-             {
-
-                 amen(maybe, comp,board);
-
-
-             }*/
-
-
+            }*/
+        
+            
         }
-        //createStraightGroup(hand[6], hand, board);
-
-        //List<List<Tile>> rem = getRemainder(board);
-        /*List<Tile> cg = createColorGroup(rem[0][0], hand, board);
-        Easy(board, hand);
-        amen(board, hand);*/
-        //List<Tile> sg = createStraightGroup(rem[0][0], hand, board);
-        //Easy(board, hand);
-
-
-
-
+      
 
 
 
@@ -153,7 +105,6 @@ namespace Rummikub
         /// <returns> true if was able to create a color group </returns>
         public static Bros createColorGroup(Tile tile, List<Tile> inputhand, List<List<Tile>> inputboard)
         {
-            //Tile removetile = null;
             List<List<Tile>> board = inputboard;
             List<Tile> hand = inputhand;
             List<Tile> colorGroup = new List<Tile>();
@@ -173,15 +124,14 @@ namespace Rummikub
                     if (check)
                     {
                         colorGroup.Add(handTile);
-                        //hand.Remove(handTile);
+                        
 
                     }
                 }
             }
-            //colorGroup.Remove(tile);
-
-
-            //if (board != null)
+           
+            
+            
             {
                 foreach (List<Tile> group in board)
                 {
@@ -201,8 +151,7 @@ namespace Rummikub
                             if (check)
                             {
                                 colorGroup.Add(group[0]);
-                                //removetile = boardTile;
-                                //hand.Remove(boardTile);
+                                
                             }
 
                         }
@@ -224,48 +173,27 @@ namespace Rummikub
                             if (check)
                             {
                                 colorGroup.Add(group[group.Count - 1]);
-                                //removetile = boardTile;
-                                //hand.Remove(boardTile);
+                               
                             }
 
                         }
                     }
-                    //group.Remove(removetile);
+                    
                 }
 
                 if (colorGroup.Count >= 3)
                 {
                     board.Add(colorGroup);
-                    //List<List<Tile>> newboard = new List<List<Tile>>();
-                    
+
+
                     foreach (Tile colortile in colorGroup)
                         hand.Remove(colortile);
-                    /*foreach (List<Tile> grp in board)
-                    {
-                        bool check = false;
-                        foreach (Tile t in colorGroup)
-                        {
-                            if ((grp[0].equals_tile(t) || grp[grp.Count - 1].equals_tile(t)) && grp.Count > 3)
-                            {
-                                check = true;
-                                List<Tile> fixedlist = new List<Tile>(grp);
-                                fixedlist.Remove(t);
-                                newboard.Add(fixedlist);
-                                break;
-                            }
 
-                        }
-                        if (!check)
-                            newboard.Add(grp);
 
-                    }*/
-                   
                     return new Bros(board, hand, colorGroup);
-                    //return true;
                 }
 
                 //return false;
-
             }
             return null;
         }
@@ -301,8 +229,7 @@ namespace Rummikub
                     {
 
                         straightGroup.Insert(0, handTile);
-                        //straightGroup.Sort((x, y) => x.value.CompareTo(y.value));
-                        //hand.Remove(handTile);
+                       
                     }
                     else
                     {
@@ -317,8 +244,7 @@ namespace Rummikub
                 }
             }
 
-            //straightGroup.Remove(tile);
-            //if (board != null)
+            
             {
                 foreach (List<Tile> group in board)
                 {
@@ -343,17 +269,14 @@ namespace Rummikub
                             {
 
                                 straightGroup.Insert(0, group[0]);
-                                //removetile = boardTile;
-                                //straightGroup.Sort((x, y) => x.value.CompareTo(y.value));
-                                //group.Remove(boardTile);
+                                
                             }
                             else
                             {
                                 if (straightGroup[straightGroup.Count - 1].value + 1 == group[0].value)
                                 {
                                     straightGroup.Add(group[0]);
-                                    //removetile = boardTile;
-                                    // group.Remove(boardTile);
+                                    
                                 }
                             }
 
@@ -380,17 +303,14 @@ namespace Rummikub
                                 {
 
                                     straightGroup.Insert(0, group[group.Count - 1]);
-                                    //removetile = boardTile;
-                                    //straightGroup.Sort((x, y) => x.value.CompareTo(y.value));
-                                    //group.Remove(boardTile);
+                                    
                                 }
                                 else
                                 {
                                     if (straightGroup[straightGroup.Count - 1].value + 1 == group[group.Count - 1].value)
                                     {
                                         straightGroup.Add(group[group.Count - 1]);
-                                        //removetile = boardTile;
-                                        // group.Remove(boardTile);
+                                       
                                     }
                                 }
 
@@ -400,53 +320,27 @@ namespace Rummikub
                             }
                         }
 
-                        //group.Remove(removetile);
-
-
-
-
-
+                       
 
                     }
                 }
                 if (straightGroup.Count >= 3)
                 {
                     board.Add(straightGroup);
-                    //List<List<Tile>> newboard = new List<List<Tile>>();
+                    
 
                     for (int j = 0; j < straightGroup.Count; j++)
                     {
                         hand.Remove(straightGroup[j]);
-                        // for(int i=0;i<board.Count;i++)
-                        //  board[i].Remove(straightGroup[j]);
+                       
                     }
-                   /* foreach (List<Tile> grp in board)
-                    {
-                        bool check=false;
-                        foreach(Tile t in straightGroup)
-                        {
-                            if ((grp[0].equals_tile(t) || grp[grp.Count - 1].equals_tile(t)) && grp.Count > 3)
-                            {
-                                check = true;
-                                List<Tile> fixedlist = new List<Tile>(grp);
-                                fixedlist.Remove(t);
-                                newboard.Add(fixedlist);
-                                break;
-                            }
-                           
-                        }
-                        if (!check)
-                            newboard.Add(grp);
-                         
-                    }*/
+                   
                     
                     return new Bros(board, hand, straightGroup);
 
-                    //board.Add(straightGroup);
-                    //return straightGroup;
-                    //return true;
+                   
                 }
-                //return false;
+                
                 return null;
             }
         }
@@ -455,52 +349,39 @@ namespace Rummikub
         {
             foreach (List<Tile> lst in board)
             {
-                /*List<Tile> color =createColorGroup(tile, hand, board);
-                if (color!=null)
-                {
-                    board.Add(color);
-                    return true;
-                }
-
-                List<Tile> straight= createStraightGroup(tile, hand, board);
-                if (straight != null)
-                {
-                    board.Add(straight);
-                    return true;
-                }*/
+               
                 if (lst.Count > 0)
                 {
                     foreach (Tile tile in hand)
                     {
-                        //checks to see if it can add tile easily to a straight group
-                        // Type[] types = (Type[])Enum.GetValues(typeof(Type));
+                        
                         if (tile != null)
                         {
                             bool colorchecker_straight = true;
                             foreach (Tile checktile in lst)
                             {
-                                // MessageBox.Show(checktile.type.ToString()+checktile.value.ToString());
+
                                 if (checktile.type != tile.type)
                                     colorchecker_straight = false;
-                                // MessageBox.Show(colorchecker.ToString());
+                                
                             }
 
                             bool colorchecker_color = true;
                             foreach (Tile checktile in lst)
                             {
-                                // MessageBox.Show(checktile.type.ToString()+checktile.value.ToString());
+                                
                                 if (checktile.type == tile.type)
                                     colorchecker_color = false;
-                                // MessageBox.Show(colorchecker.ToString());
+                                
                             }
 
                             bool valuechecker = true;
                             foreach (Tile checktile in lst)
                             {
-                                // MessageBox.Show(checktile.type.ToString()+checktile.value.ToString());
+                             
                                 if (checktile.value != tile.value)
                                     valuechecker = false;
-                                // MessageBox.Show(colorchecker.ToString());
+                            
                             }
 
                             if (tile.value + 1 == lst[0].value)
@@ -513,7 +394,7 @@ namespace Rummikub
                                 }
                             }
 
-                            if (tile.value - 1 == lst[lst.Count - 1].value) //check maybe without -1
+                            if (tile.value - 1 == lst[lst.Count - 1].value)
                             {
                                 if (colorchecker_straight)
                                 {
@@ -523,7 +404,7 @@ namespace Rummikub
 
                             }
 
-                            if (!colorchecker_color)
+                            if (colorchecker_color)
                             {
                                 if (valuechecker)
                                 {
@@ -539,68 +420,11 @@ namespace Rummikub
                 }
 
             }
-
-
-
+            
 
             return false;
         }
 
-
-
-
-
-
-        /* public static void Extra(List<List<Tile>> board, List<Tile> hand)
-         {
-             foreach (Tile handtile in hand)
-             {
-                 List<Tile> maybe = new List<Tile>() { handtile };
-                 bool colorchecker = true;
-                 foreach (Tile handtile2 in hand)
-                 {
-                     if (handtile.type != handtile2.type)
-                         colorchecker = false;
-
-                     if (handtile2.value + 1 == maybe[0].value)
-
-                     {
-                         if (colorchecker)
-                         {
-
-                             maybe.Insert(0, handtile2);
-
-                         }
-                     }
-
-                     if (handtile2.value - 1 == maybe[maybe.Count - 1].value) //check maybe without -1
-                     {
-                         if (colorchecker)
-                         {
-                             maybe.Add(handtile2);
-
-                         }
-
-                     }
-
-                     if (!colorchecker)
-                     {
-                         if (handtile2.value == maybe[0].value)
-                         {
-                             maybe.Add(handtile2);
-
-                         }
-
-                     }
-                 }
-                 if (maybe.Count >= 3)
-                 {
-                     board.Add(maybe);
-
-                 }
-
-
-             }*/
 
     }
 }

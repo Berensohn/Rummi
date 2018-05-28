@@ -12,24 +12,46 @@ using System.Collections;
 
 namespace Rummikub
 {
+    /// <summary>
+    /// tile card class consists of type, value and picture
+    /// </summary>
     public class Tile
     {
-        public int value;
-        public Type type;
-        public bool partof;
-        public PictureBox picture;
+        public int value; //int value of tile
+        public Type type; //enum type of tile. consists of spades,hearts,clubs,diamonds.
+        public PictureBox picture; //picture box containing picture of tile according to value and type
         
-
+        
+        /// <returns> type of tile </returns>
         public new Type GetType()
         {
             return type;
         }
 
+        /// <returns> value of tile </returns>
         public int GetValue()
         {
             return value;
         }
 
+        /// <returns>picture box containg a picture of the tile</returns>
+        public PictureBox getPicture()
+        {
+            return this.picture;
+        }
+
+        /// <summary>
+        /// sets picture of tile
+        /// </summary>
+        /// <param name="p1"></param>
+        public void setPicture(PictureBox p1)
+        {
+            this.picture = p1;
+        }
+
+        /// <summary>
+        /// enum of clubs series
+        /// </summary>
         enum CLUBS
         {
             clubs_1 = 1,
@@ -46,6 +68,10 @@ namespace Rummikub
             clubs_12,
             clubs_13
         }
+
+        /// <summary>
+        /// enum of diamonds series
+        /// </summary>
         enum DIAMONDS
         {
             diamonds_1 = 1,
@@ -62,6 +88,10 @@ namespace Rummikub
             diamonds_12,
             diamonds_13
         }
+
+        /// <summary>
+        /// enum of spades series
+        /// </summary>
         enum SPADES
         {
             spades_1 = 1,
@@ -78,6 +108,9 @@ namespace Rummikub
             spades_12,
             spades_13
         }
+        /// <summary>
+        /// enum of hearts series
+        /// </summary>
         enum HEARTS
         {
             hearts_1 = 1,
@@ -96,29 +129,32 @@ namespace Rummikub
         }
 
      
-
+        /// <summary>
+        /// copy constructor
+        /// </summary>
+        /// <param name="c"></param>
         public Tile(Tile c)
         {
             this.value = c.value;
             this.type = c.type;
-            this.partof = c.partof;
             this.picture = new PictureBox();
             this.picture.Image = c.picture.Image;
 
         }
+
+        /// <summary>
+        /// constructs tile by the the picture of it
+        /// </summary>
+        /// <param name="p1"></param>
         public Tile(PictureBox p1)
         {
-            this.partof = false;
             this.picture = p1;
             this.picture.Image = p1.Image;
             bool found = false;
             PictureBox check = new PictureBox();
             Type[] types = (Type[])Enum.GetValues(typeof(Type));
             foreach (Type type in types)
-
             {
-                /*if (found)
-                    break;*/
                 System.Diagnostics.Debug.WriteLine(type.ToString());
                 for (int i = 1; i <= 13; i++)
                 {
@@ -128,7 +164,6 @@ namespace Rummikub
                     {
                         this.value = i;
                         this.type = type;
-                        //found = true;
                         break;
                     }
                 }
@@ -137,15 +172,13 @@ namespace Rummikub
 
         }
     
-
-
-        
-        public Tile()
-        { }
-
+        /// <summary>
+        /// constructs tile by type and value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="type"></param>
         public Tile(int value, Type type)
         {
-            this.partof = false;
             this.value = value;
             this.type = type;
             this.picture = new PictureBox();
@@ -178,25 +211,14 @@ namespace Rummikub
             picture.Size = new Size(60, 80);
             
         }
-        public PictureBox getPicture()
-        {
-            return this.picture;
-        }
-        public void Newcard(Tile c)
+        
+      
 
-        {
-
-            this.type = c.type;
-            this.value = c.value;
-            if (c.getPicture() != null)
-                this.getPicture().Image = c.getPicture().Image;
-            else
-            { this.getPicture().Image = Properties.Resources.red_joker; }
-        }
-
-        public void setPicture(PictureBox p1)
-        { this.picture = p1; }
-
+        /// <summary>
+        /// checks if 2 tiles are the same
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns>true if the same</returns>
         public bool equals_tile (Tile t)
         {
             if (this.type != t.type)
@@ -206,10 +228,14 @@ namespace Rummikub
             return true;
         }
 
+        /// <summary>
+        /// String representation of tile
+        /// </summary>
+        /// <returns>string</returns>
         override
         public String ToString ()
         {
-            return this.type.ToString() + this.value;
+            return "("+this.type.ToString() +" "+ this.value+")";
         }
     }
 

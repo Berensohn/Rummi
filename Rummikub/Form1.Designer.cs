@@ -31,19 +31,19 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.initialize = new System.Windows.Forms.Button();
             this.handTable = new System.Windows.Forms.TableLayoutPanel();
             this.boardTable = new System.Windows.Forms.TableLayoutPanel();
             this.computerTable = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.play = new System.Windows.Forms.Button();
+            this.pattern = new System.Windows.Forms.Button();
+            this.takeNewBtn = new System.Windows.Forms.Button();
+            this.undoBtn = new System.Windows.Forms.Button();
+            this.suggestBtn = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button7 = new System.Windows.Forms.Button();
+            this.checkBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // imageList1
@@ -54,15 +54,15 @@
             this.imageList1.Images.SetKeyName(1, "clubs_2.png");
             this.imageList1.Images.SetKeyName(2, "clubs_3.png");
             // 
-            // button1
+            // initialize
             // 
-            this.button1.Location = new System.Drawing.Point(64, 48);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Initialize";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.initialize.Location = new System.Drawing.Point(64, 48);
+            this.initialize.Name = "initialize";
+            this.initialize.Size = new System.Drawing.Size(75, 23);
+            this.initialize.TabIndex = 0;
+            this.initialize.Text = "Initialize";
+            this.initialize.UseVisualStyleBackColor = true;
+            this.initialize.Click += new System.EventHandler(this.initialize_Click);
             // 
             // handTable
             // 
@@ -163,55 +163,55 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "COMPUTER";
             // 
-            // button2
+            // play
             // 
-            this.button2.Location = new System.Drawing.Point(64, 88);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Play";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.play.Location = new System.Drawing.Point(64, 88);
+            this.play.Name = "play";
+            this.play.Size = new System.Drawing.Size(75, 23);
+            this.play.TabIndex = 7;
+            this.play.Text = "Play";
+            this.play.UseVisualStyleBackColor = true;
+            this.play.Click += new System.EventHandler(this.play_Click);
             // 
-            // button3
+            // pattern
             // 
-            this.button3.Location = new System.Drawing.Point(64, 133);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Pattern Test";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.pattern.Location = new System.Drawing.Point(64, 133);
+            this.pattern.Name = "pattern";
+            this.pattern.Size = new System.Drawing.Size(75, 23);
+            this.pattern.TabIndex = 8;
+            this.pattern.Text = "Pattern Test";
+            this.pattern.UseVisualStyleBackColor = true;
+            this.pattern.Click += new System.EventHandler(this.pattern_Click);
             // 
-            // button4
+            // takeNewBtn
             // 
-            this.button4.Location = new System.Drawing.Point(64, 176);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "Take New";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.takeNewBtn.Location = new System.Drawing.Point(64, 176);
+            this.takeNewBtn.Name = "takeNewBtn";
+            this.takeNewBtn.Size = new System.Drawing.Size(75, 23);
+            this.takeNewBtn.TabIndex = 10;
+            this.takeNewBtn.Text = "Take New";
+            this.takeNewBtn.UseVisualStyleBackColor = true;
+            this.takeNewBtn.Click += new System.EventHandler(this.takeNewBtn_Click);
             // 
-            // button5
+            // undoBtn
             // 
-            this.button5.Location = new System.Drawing.Point(64, 219);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 11;
-            this.button5.Text = "Undo";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.undoBtn.Location = new System.Drawing.Point(64, 219);
+            this.undoBtn.Name = "undoBtn";
+            this.undoBtn.Size = new System.Drawing.Size(75, 23);
+            this.undoBtn.TabIndex = 11;
+            this.undoBtn.Text = "Undo";
+            this.undoBtn.UseVisualStyleBackColor = true;
+            this.undoBtn.Click += new System.EventHandler(this.undoBtn_Click);
             // 
-            // button6
+            // suggestBtn
             // 
-            this.button6.Location = new System.Drawing.Point(1524, 562);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 12;
-            this.button6.Text = "Suggestion";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.suggestBtn.Location = new System.Drawing.Point(1524, 562);
+            this.suggestBtn.Name = "suggestBtn";
+            this.suggestBtn.Size = new System.Drawing.Size(75, 23);
+            this.suggestBtn.TabIndex = 12;
+            this.suggestBtn.Text = "Suggestion";
+            this.suggestBtn.UseVisualStyleBackColor = true;
+            this.suggestBtn.Click += new System.EventHandler(this.suggestBtn_Click);
             // 
             // textBox1
             // 
@@ -220,38 +220,37 @@
             this.textBox1.Size = new System.Drawing.Size(44, 20);
             this.textBox1.TabIndex = 13;
             // 
-            // button7
+            // checkBtn
             // 
-            this.button7.Location = new System.Drawing.Point(1333, 399);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 14;
-            this.button7.Text = "Check";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.checkBtn.Location = new System.Drawing.Point(1333, 399);
+            this.checkBtn.Name = "checkBtn";
+            this.checkBtn.Size = new System.Drawing.Size(75, 23);
+            this.checkBtn.TabIndex = 14;
+            this.checkBtn.Text = "Check";
+            this.checkBtn.UseVisualStyleBackColor = true;
+            this.checkBtn.Click += new System.EventHandler(this.checkBtn_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1799, 806);
-            this.Controls.Add(this.button7);
+            this.ClientSize = new System.Drawing.Size(1818, 806);
+            this.Controls.Add(this.checkBtn);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.suggestBtn);
+            this.Controls.Add(this.undoBtn);
+            this.Controls.Add(this.takeNewBtn);
+            this.Controls.Add(this.pattern);
+            this.Controls.Add(this.play);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.computerTable);
             this.Controls.Add(this.boardTable);
             this.Controls.Add(this.handTable);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.initialize);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -260,19 +259,19 @@
         #endregion
 
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button initialize;
         private System.Windows.Forms.TableLayoutPanel handTable;
         private System.Windows.Forms.TableLayoutPanel boardTable;
         private System.Windows.Forms.TableLayoutPanel computerTable;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button play;
+        private System.Windows.Forms.Button pattern;
+        private System.Windows.Forms.Button takeNewBtn;
+        private System.Windows.Forms.Button undoBtn;
+        private System.Windows.Forms.Button suggestBtn;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button checkBtn;
     }
 }
 

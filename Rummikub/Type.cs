@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Rummikub
 {
+    //types of cards
     public enum Type
     {
         CLUBS,DIAMONDS,SPADES,HEARTS

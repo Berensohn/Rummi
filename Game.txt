@@ -1,0 +1,21 @@
+
+---------------------COMPUTER TURN---------------------
+
+------------------------BEFORE------------------------
+------------------------AFTER------------------------
+(HEARTS 7)(HEARTS 8)(HEARTS 9)(HEARTS 10)
+(SPADES 4)(SPADES 5)(SPADES 6)(SPADES 7)(SPADES 8)(SPADES 9)(SPADES 10)
+
+---------------------PLAYER TURN---------------------
+
+------------------------BEFORE------------------------
+(HEARTS 7)(HEARTS 8)(HEARTS 9)(HEARTS 10)
+(SPADES 4)(SPADES 5)(SPADES 6)(SPADES 7)
+(SPADES 8)(SPADES 9)(SPADES 10)
+------------------------AFTER------------------------
+(HEARTS 7)(HEARTS 8)(HEARTS 9)(HEARTS 10)
+(SPADES 5)(SPADES 6)(SPADES 8)(SPADES 9)(SPADES 10)
+(CLUBS 5)(HEARTS 5)(DIAMONDS 5)
+(SPADES 2)(SPADES 3)(CLUBS 7)(HEARTS 7)(SPADES 7)
+(CLUBS 4)(DIAMONDS 4)(HEARTS 4)(SPADES 4)
+(DIAMONDS 6)(CLUBS 6)(HEARTS 6)
