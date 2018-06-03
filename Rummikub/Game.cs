@@ -11,7 +11,7 @@ namespace Rummikub
     /// </summary>
     public class Game
     {
-        public List<Tile> bowl = new List<Tile>(106); //bowl consisting of 2 deck of cards, 53 cards in each deck with joker
+        public List<Tile> bowl = new List<Tile>(104); //bowl consisting of 2 deck of cards, 53 cards in each deck with joker
         public List<Tile> hand = new List<Tile>(14); //cards in hand 
         public List<Tile> computer = new List<Tile>(14); //cards in bowl
 
@@ -19,7 +19,6 @@ namespace Rummikub
         /// <summary>
         /// constructs the bowl with all cards, then gives 14 cards at random to player and computer each
         /// </summary>
-
 
         public Game ()
         {

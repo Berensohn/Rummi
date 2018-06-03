@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Rummikub
 {
     /// <summary>
-    /// the class math project contains several pattern lists fro the pattern tests
+    /// the class math project contains several pattern lists for the pattern tests
     /// </summary>
     public class MathProject
     {
@@ -61,6 +61,8 @@ namespace Rummikub
 
         public static readonly List<List<int>> sdarot = new List<List<int>>() { lst1, lst30, lst2, lst3, lst4, lst5, lst6, lst7, lst9, lst10, lst11, lst12, lst13, lst14, lst15, lst16, lst17, lst18, lst19, lst20, lst21, lst22, lst23, lst24, lst25, lst26, lst27, lst28, lst29, lst31, lst32, lst33, lst34, lst35, lst37, lst38 };
 
+        
+        /// <returns>string containing the first 3 elements of pattern list</returns>
         public static String ListToString (List<int> lst)
         {
             String s1 = lst[0].ToString();

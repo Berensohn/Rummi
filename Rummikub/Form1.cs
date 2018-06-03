@@ -58,8 +58,8 @@ namespace Rummikub
             AddMouseEventHandlerToHand();
             AddMouseEventHandlerToBoard();
             AddMouseEventHandlerToComputer();
-            
 
+            initMethod();
         }
 
         /// <summary>
@@ -120,6 +120,12 @@ namespace Rummikub
         /// <param name="e"></param>
         private void initialize_Click(object sender, EventArgs e)
         {
+            initMethod();
+
+        }
+
+        private void initMethod()
+        {
             Tile t0 = new Tile(1, Type.CLUBS);
             Tile t1 = new Tile(2, Type.CLUBS);
             Tile t2 = new Tile(3, Type.CLUBS);
@@ -137,12 +143,13 @@ namespace Rummikub
             Tile t11 = new Tile(8, Type.SPADES);
             Tile t12 = new Tile(9, Type.SPADES);
             Tile t13 = new Tile(10, Type.SPADES);
+            Tile t14 = new Tile(1, Type.SPADES);
 
 
-            List<Tile> perfectcomp = new List<Tile> { t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13};
+            List<Tile> perfectcomp = new List<Tile> { t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14 };
             compLst = new List<Tile>(perfectcomp);
 
-            
+
             Tile m1 = new Tile(5, Type.CLUBS);
             Tile m2 = new Tile(5, Type.HEARTS);
             Tile m3 = new Tile(6, Type.DIAMONDS);
@@ -152,32 +159,31 @@ namespace Rummikub
             Tile m6 = new Tile(6, Type.CLUBS);
 
             Tile m7 = new Tile(7, Type.CLUBS);
-            Tile m8 = new Tile(7, Type.HEARTS);
+            Tile m8 = new Tile(1, Type.HEARTS);
 
             Tile m9 = new Tile(4, Type.DIAMONDS);
             Tile m10 = new Tile(4, Type.CLUBS);
 
-            Tile m11 = new Tile(6, Type.HEARTS);
+            Tile m11 = new Tile(1, Type.HEARTS);
             Tile m12 = new Tile(4, Type.HEARTS);
-            Tile m13 = new Tile(5, Type.DIAMONDS);
+            Tile m13 = new Tile(2, Type.DIAMONDS);
+            Tile m14 = new Tile(1, Type.DIAMONDS);
 
-            List<Tile> perfecthand = new List<Tile> { m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13 };
+            List<Tile> perfecthand = new List<Tile> { m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13, m14 };
             handLst = new List<Tile>(perfecthand);
-           
-            
-            boardTB(boardLst,0);
+
+
+            boardTB(boardLst, 0);
             handTB(handLst);
             compTB(compLst);
 
             AddMouseEventHandlerToBoard();
             AddMouseEventHandlerToHand();
             AddMouseEventHandlerToComputer();
-
-
         }
 
-        
-        
+
+
         /// <summary>
         /// button that plays turn for computer
         /// </summary>
@@ -200,8 +206,8 @@ namespace Rummikub
 
                 AddMouseEventHandlerToComputer();
 
-                Algorithm.Easy(boardLst, compLst);
-                for (int j = 1; j <= 2; j++)
+                //Algorithm.Easy(boardLst, compLst);
+                for (int j = 1; j <= 1; j++)
                 {
                     for (int i = 0; i < compLst.Count; i++)
                     {
@@ -211,7 +217,7 @@ namespace Rummikub
 
                     }
                 }
-                Algorithm.Easy(boardLst, compLst);
+                //Algorithm.Easy(boardLst, compLst);
 
                 boardTB(boardLst, 0);
                
@@ -238,74 +244,6 @@ namespace Rummikub
                 
             }
            
-        }
-
-        /// <summary>
-        /// method that adds tiles to computer table. It connects between the backend to the UI.
-        /// </summary>
-        /// <param name="comp"></param>       
-        public void compTB(List<Tile> comp)
-        { 
-            for (int i = 0; i < comp.Count; i++)
-            {
-                computerTable.Controls.Remove(computerTable.GetControlFromPosition(i, 0));
-                computerTable.Controls.Add(comp[i].getPicture(), i, 0);
-            }
-
-        }
-
-        /// <summary>
-        /// method that adds tiles to player table. It connects between the backend to the UI.
-        /// </summary>
-        /// <param name="hand"></param>
-        public void handTB(List<Tile> hand)
-        {
-           
-            for (int i = 0; i < hand.Count; i++)
-            {
-                handTable.Controls.Remove(handTable.GetControlFromPosition(i, 0));
-                handTable.Controls.Add(hand[i].getPicture(), i, 0);
-
-            }
-        }
-
-        public void groupTB(List<Tile> group,int row,int column)
-        {
-            int i;
-            for (i = 0; i < group.Count; i++)
-            {
-                
-                boardTable.Controls.Add(group[i].picture, column, row);
-                column++;
-
-            }
-            
-        }
-
-        /// <summary>
-        /// method that adds the board list to the board table. It connects between the backend to the UI.
-        /// </summary>
-        /// <param name="board"></param>
-        /// <param name="row"></param>
-        public void boardTB(List<List<Tile>> board, int row)
-        {
-          
-            
-            int column = 0;
-            foreach (List<Tile> group in board)
-            {
-                if (group.Count>=3)
-                {
-                    groupTB(group, row,column);
-
-                    row++;
-                }
-                if (row > 7)
-                {
-                    column = 6;
-                    row = 0;
-                }
-            }
         }
 
         /// <summary>
@@ -531,21 +469,29 @@ namespace Rummikub
 
 
            
-            Algorithm.Easy(boardLst, handLst);
-            for (int j = 1; j <= 2; j++)
+            //Algorithm.Easy(boardLst, handLst);
+            for (int j = 1; j <= 1; j++)
             {
                 for (int i = 0; i < handLst.Count; i++)
                 {
 
                     Algorithm.amen(handLst[i], handLst, boardLst);
 
-
-
+                    
                 }
+                
+                    
             }
-            Algorithm.Easy(boardLst, handLst);
-
-           
+            //Algorithm.Easy(boardLst, handLst);
+            List<List<Tile>> inputboard= new List<List<Tile>>(boardLst);
+            List<Tile> inputcomp = new List<Tile>(handLst);
+            Bros order = Algorithm.disorder(handLst, boardLst);
+            if (order != null)
+            {
+                compLst = order.hand;
+                boardLst = order.board;
+            }
+          
             boardTB(boardLst, 0);
             UpdateBoard();
 
@@ -561,14 +507,88 @@ namespace Rummikub
         /// </summary>
         private void WinOrLose()
         {
-            if (handLst==null)
+            if (handLst.Count==0)
                 MessageBox.Show("You Win!!!");
-            if (compLst == null)
+            if (compLst.Count == 0)
                 MessageBox.Show("Computer Wins! :(");
         }
 
 
-       
+
+        /// <summary>
+        /// method that adds tiles to computer table. It connects between the backend to the UI.
+        /// </summary>
+        /// <param name="comp"></param>       
+        public void compTB(List<Tile> comp)
+        {
+            for (int i = 0; i < comp.Count; i++)
+            {
+                computerTable.Controls.Remove(computerTable.GetControlFromPosition(i, 0));
+                computerTable.Controls.Add(comp[i].getPicture(), i, 0);
+            }
+
+        }
+
+        /// <summary>
+        /// method that adds tiles to player table. It connects between the backend to the UI.
+        /// </summary>
+        /// <param name="hand"></param>
+        public void handTB(List<Tile> hand)
+        {
+
+            for (int i = 0; i < hand.Count; i++)
+            {
+                handTable.Controls.Remove(handTable.GetControlFromPosition(i, 0));
+                handTable.Controls.Add(hand[i].getPicture(), i, 0);
+
+            }
+        }
+
+        /// <summary>
+        /// helper method to boardTB, adds individual groups to board
+        /// </summary>
+        /// <param name="group"></param>
+        /// <param name="row"></param>
+        /// <param name="column"></param>
+        public void groupTB(List<Tile> group, int row, int column)
+        {
+            int i;
+            for (i = 0; i < group.Count; i++)
+            {
+
+                boardTable.Controls.Add(group[i].picture, column, row);
+                column++;
+
+            }
+
+        }
+
+        /// <summary>
+        /// method that adds the board list to the board table. It connects between the backend to the UI.
+        /// </summary>
+        /// <param name="board"></param>
+        /// <param name="row"></param>
+        public void boardTB(List<List<Tile>> board, int row)
+        {
+
+
+            int column = 0;
+            foreach (List<Tile> group in board)
+            {
+                if (group.Count >= 3)
+                {
+                    groupTB(group, row, column);
+
+                    row++;
+                }
+                if (row > 7)
+                {
+                    column = 6;
+                    row = 0;
+                }
+            }
+        }
+
     }
 }
 
