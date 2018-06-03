@@ -58,9 +58,13 @@ namespace Rummikub
 
         public static Bros disorder(List<Tile> outcomp, List<List<Tile>> outboard)
         {
-
+            outboard.Capacity = 15;
+            outcomp.Capacity = 15;
             inputboard = new List<List<Tile>>(outboard);
             inputcomp = new List<Tile>(outcomp);
+
+            inputboard.Capacity = 15;
+            inputcomp.Capacity = 15;
 
             List<List<Tile>> board = new List<List<Tile>>(inputboard);
             List<Tile> comp = new List<Tile>(inputcomp);
@@ -70,6 +74,8 @@ namespace Rummikub
             { 
                 board=new List<List<Tile>>(inputboard);
                 comp = new List<Tile>(inputcomp);
+                board.Capacity = 15;
+                comp.Capacity = 15;
                 List<Tile> modifiedGroup = new List<Tile>(group);
 
                 int length = group.Count;
@@ -78,11 +84,11 @@ namespace Rummikub
                 for (int i =0;i<group.Count;i++)
                 {
          
-                    Bros colorbros = createColorGroup(group[i], comp, board);
+                    Bros colorbros = createColorGroup(modifiedGroup[i], comp, board);
                     if (colorbros == null)
                     {
 
-                        Bros straightbros = createStraightGroup(group[i], comp, board);
+                        Bros straightbros = createStraightGroup(modifiedGroup[i], comp, board);
                         if (straightbros == null)
                             break;
                         else
@@ -184,7 +190,7 @@ namespace Rummikub
                     }
                     if (check)
                     {
-                        colorGroup.Add(handTile);
+                        colorGroup.Add(new Tile(handTile));
 
 
                     }
@@ -212,7 +218,7 @@ namespace Rummikub
                             }
                             if (check)
                             {
-                                colorGroup.Add(group[0]);
+                                colorGroup.Add(new Tile(group[0]));
                                 group.RemoveAt(0);
                             }
 
@@ -232,7 +238,7 @@ namespace Rummikub
                             }
                             if (check)
                             {
-                                colorGroup.Add(group[group.Count - 1]);
+                                colorGroup.Add(new Tile(group[group.Count - 1]));
                                 group.RemoveAt(group.Count - 1);
 
                             }
@@ -259,7 +265,7 @@ namespace Rummikub
                             }
                             if (validColor && group[j].value == colorGroup[0].value)
                             {
-                                colorGroup.Add(group[j]);
+                                colorGroup.Add(new Tile(group[j]));
                                 group.RemoveAt(j);
                                 break;
                             }
@@ -326,7 +332,7 @@ namespace Rummikub
                 }
                 if (colorGroup.Count >= 3)
                 {
-                    board.Add(colorGroup);
+                    board.Add(new List<Tile>(colorGroup));
 
 
                     foreach (Tile colortile in colorGroup)
@@ -374,14 +380,14 @@ namespace Rummikub
                     if (straightGroup[0].value - 1 == handTile.value)
                     {
 
-                        straightGroup.Insert(0, handTile);
+                        straightGroup.Insert(0, new Tile(handTile));
 
                     }
                     else
                     {
                         if (straightGroup[straightGroup.Count - 1].value + 1 == handTile.value)
                         {
-                            straightGroup.Add(handTile);
+                            straightGroup.Add(new Tile(handTile));
                         }
                     }
 
@@ -425,7 +431,7 @@ namespace Rummikub
                                 if (straightGroup[0].value - 1 == group[0].value)
                                 {
 
-                                    straightGroup.Insert(0, group[0]);
+                                    straightGroup.Insert(0, new Tile(group[0]));
                                     group.RemoveAt(0);
 
                                 }
@@ -433,7 +439,7 @@ namespace Rummikub
                                 {
                                     if (straightGroup[straightGroup.Count - 1].value + 1 == group[0].value)
                                     {
-                                        straightGroup.Add(group[0]);
+                                        straightGroup.Add(new Tile(group[0]));
                                         group.RemoveAt(0);
 
                                     }
@@ -460,7 +466,7 @@ namespace Rummikub
                                 if (straightGroup[0].value - 1 == group[group.Count - 1].value)
                                 {
 
-                                    straightGroup.Insert(0, group[group.Count - 1]);
+                                    straightGroup.Insert(0, new Tile(group[group.Count - 1]));
                                     group.RemoveAt(group.Count - 1);
 
                                 }
@@ -468,7 +474,7 @@ namespace Rummikub
                                 {
                                     if (straightGroup[straightGroup.Count - 1].value + 1 == group[group.Count - 1].value)
                                     {
-                                        straightGroup.Add(group[group.Count - 1]);
+                                        straightGroup.Add(new Tile(group[group.Count - 1]));
                                         group.RemoveAt(group.Count - 1);
 
                                     }
@@ -488,7 +494,7 @@ namespace Rummikub
                                 {
                                     if (colortile.type == straightGroup[0].type)
                                     {
-                                        straightGroup.Insert(0, colortile);
+                                        straightGroup.Insert(0, new Tile(colortile));
                                         group.Remove(colortile);
                                     }
                                 }
@@ -499,7 +505,7 @@ namespace Rummikub
                                 {
                                     if (colortile.type == straightGroup[0].type)
                                     {
-                                        straightGroup.Add(colortile);
+                                        straightGroup.Add(new Tile(colortile));
                                         group.Remove(colortile);
                                     }
                                 }
@@ -524,7 +530,7 @@ namespace Rummikub
                             }
                             if (validStraight && group[j].value - 1 == straightGroup[straightGroup.Count - 1].value)
                             {
-                                straightGroup.Add(group[j]);
+                                straightGroup.Add(new Tile(group[j]));
                                 group.RemoveAt(j);
                                 break;
 
@@ -532,7 +538,7 @@ namespace Rummikub
 
                             if (validStraight && group[j].value + 1 == straightGroup[0].value)
                             {
-                                straightGroup.Add(group[j]);
+                                straightGroup.Insert(0, new Tile(group[j]));
                                 group.RemoveAt(j);
                                 break;
                             }
@@ -651,7 +657,7 @@ namespace Rummikub
             }
             if (straightGroup.Count >= 3)
             {
-                board.Add(straightGroup);
+                board.Add(new List<Tile> (straightGroup));
 
 
                 for (int j = 0; j < straightGroup.Count; j++)

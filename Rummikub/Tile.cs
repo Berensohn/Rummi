@@ -139,6 +139,8 @@ namespace Rummikub
             this.type = c.type;
             this.picture = new PictureBox();
             this.picture.Image = c.picture.Image;
+            this.picture.SizeMode = PictureBoxSizeMode.StretchImage;
+            this.picture.Size = new Size(60, 80);
 
         }
 

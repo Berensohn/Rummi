@@ -3,13 +3,8 @@
 
 ------------------------BEFORE------------------------
 ------------------------AFTER------------------------
+(HEARTS 8)(HEARTS 9)(HEARTS 10)
 (HEARTS 7)(HEARTS 8)(HEARTS 9)(HEARTS 10)
+(SPADES 5)(SPADES 6)(SPADES 7)(SPADES 8)(SPADES 9)(SPADES 10)
 (SPADES 4)(SPADES 5)(SPADES 6)(SPADES 7)(SPADES 8)(SPADES 9)(SPADES 10)
-
----------------------PLAYER TURN---------------------
-
-------------------------BEFORE------------------------
-(HEARTS 7)(HEARTS 8)(HEARTS 9)(HEARTS 10)
-(SPADES 4)(SPADES 5)(SPADES 6)(SPADES 7)
-(SPADES 8)(SPADES 9)(SPADES 10)
-------------------------AFTER------------------------
+(SPADES 7)(SPADES 8)(SPADES 9)(SPADES 10)
